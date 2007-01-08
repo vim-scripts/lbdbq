@@ -1,0 +1,21 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=1757
+
+Functions and various mode mappings for querying lbdb (http://www.spinnaker.de/lbdb/) when using Vim to edit mails and mail headers, for example from Mutt (http://www.mutt.org).
+
+Using this utility lines like the following appearing in a Vim buffer:
+    To: name surname, name2 surname2
+can be automatically converted to lines like
+    To: My Friend <foo@example.com>, My Other Friend <bar@example.com>
+by querying lbdb.
+
+When the expansion of a given contact is ambiguous (i.e. it corresponds to more than one contact) the user is interactively asked to choose among them.
+
+The utility can be used in various ways:
+- in normal mode typing <Leader>lb: the current recipient line will be expanded (i.e. all expandable short names will be expanded to full name/address pairs)
+- in insert mode typing <Leader>lb: same as above but without leaving insert mode
+- in line visual mode typing <Leader>lb: same as above but all the visually selected line will be subject to expansion
+- in visual mode typing <Leader>lb: only the short names contained in the visually selected text will be subject to expansion
+
+RELATED SCRIPTS
+
+I'm (now) aware that vimscript #388 is older than this script of mine and provide similar features. But this script is strictly more powerful (YMMV of course). For example it works in various modes (visual/insert/normal/...), is able to substitute more contacts at once, and takes into account the semantics of recipient lines. E.g.: if you try to expand "name surname" (without double quotes) the plugin looks up for both of them, while vimscript #388 will look up only for the part under the courses, leading more likely to ambiguous answers.
